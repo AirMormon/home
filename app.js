@@ -8,8 +8,8 @@ var jsonParser = bodyParser.json();
 var port = 5000;
 app.use(bodyParser.json());
 
-const mongoURL = 'mongodb://localhost:27017/homepage'
-//const mongoURL = 'mongodb://username:password1@ds233228.mlab.com:33228/homepage'
+//const mongoURL = 'mongodb://localhost:27017/homepage'
+const mongoURL = 'mongodb://username:password1@ds233228.mlab.com:33228/homepage'
 const mongoClient = require('mongodb').MongoClient;
 const assert = require('assert')
 
@@ -60,6 +60,6 @@ app.get('/respo', function (req, res) {
 
 })
 
-app.listen(port, function () {
-  console.log('Great! The server is running and waiting for traffic on port 5000.')
+app.listen(process.env.PORT || 5000, function () {
+  console.log("going on port", this.address().port, app.settings.env);
 });
