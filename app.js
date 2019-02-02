@@ -8,6 +8,19 @@ var jsonParser = bodyParser.json();
 var port = 5000;
 app.use(bodyParser.json());
 
+
+
+
+app.all('*', function(req, res, next) {
+  var origin = req.get('origin'); 
+  res.header('Access-Control-Allow-Origin', origin);
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
+
+
 //const mongoURL = 'mongodb://localhost:27017/homepage'
 const mongoURL = 'mongodb://username:password1@ds233228.mlab.com:33228/homepage'
 const mongoClient = require('mongodb').MongoClient;
