@@ -7,20 +7,7 @@ var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 var port = 5000;
 app.use(bodyParser.json());
-
-
-
-
-app.all('*', function(req, res, next) {
-  var origin = req.get('origin'); 
-  res.header('Access-Control-Allow-Origin', origin);
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-});
-
-
-
+const rp = require('request-promise')
 //const mongoURL = 'mongodb://localhost:27017/homepage'
 const mongoURL = 'mongodb://username:password1@ds233228.mlab.com:33228/homepage'
 const mongoClient = require('mongodb').MongoClient;
@@ -34,10 +21,40 @@ mongoClient.connect(mongoURL, {
   db = client.db("homepage")
 })
 
-
-
-
 app.use(express.static(__dirname + '/public')); //That's a double underscore
+
+
+app.get('/nba', function (req, res) {
+  var array = []
+
+  request('https://www.rotowire.com/basketball/nba-lineups.php', (error, response, html) => {
+
+    if (!error && response.statusCode == 200) {
+      const $ = cheerio.load(html)
+      $('.lineup__matchup').each((i, el) => {
+        visit = $(el)
+          .find('.is-visit')
+          .text()
+          .replace(/\s\s+/g, '')
+
+        home = $(el)
+          .find('.is-home')
+          .text()
+          .replace(/\s\s+/g, '')
+
+        array.push({
+          "v": visit,
+          "h": home
+        });
+      })
+      res.send(array)
+    }
+  })
+
+})
+
+
+
 
 //the specific route handler below is not really needed anymore since by default express looks to server index.html
 app.get('/', function (req, res) {
@@ -52,7 +69,7 @@ app.post('/data', function (req, res) {
 
 app.post('/del', function (req, res) {
   var data = req.body.item;
- 
+
   db.collection('dataSet').deleteMany({
     "stuff": data
   });
@@ -72,6 +89,25 @@ app.get('/respo', function (req, res) {
   })
 
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.listen(process.env.PORT || 5000, function () {
   console.log("going on port", this.address().port, app.settings.env);

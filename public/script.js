@@ -8,7 +8,7 @@ var upcomingGames = document.getElementById("scores")
 var subBut = document.getElementById("subButton")
 
 var list = document.getElementById("list")
-
+var keys = []
 
 getdata();
 getList();
@@ -23,6 +23,21 @@ button.onclick = function () {
     search.value = "";
 }
 
+window.addEventListener('keydown', keysPressed)
+
+
+function keysPressed(e) {
+    // store an entry for every key pressed
+    keys[e.keyCode] = true;
+
+    // Ctrl + f
+    if (keys[16] && keys[76]) {
+        // do something
+        makeList();
+        // prevent default browser behavior
+        e.preventDefault();
+    }
+}
 
 search.addEventListener("keyup", function (event) {
     // Cancel the default action, if needed
@@ -32,6 +47,8 @@ search.addEventListener("keyup", function (event) {
         // Trigger the button element with a click
         button.click();
     }
+
+
 });
 
 
@@ -133,27 +150,25 @@ function deleteThing(thing) {
 
 function getdata() {
     var newrequest = new XMLHttpRequest();
-    newrequest.open("GET", "https://stats.nba.com/stats/scoreboardV2/?GameDate=01/31/2019&LeagueID=00&DayOffset=0");
-    // newrequest.open("GET", "https://stats.nba.com/stats/schedule");
+    newrequest.open("GET", "/nba");
+
     newrequest.send();
     newrequest.addEventListener('load', function () {
-        var data = JSON.parse(this.responseText);
-        var games = data.resultSets[3].rowSet;
-        var times = data.resultSets[0].rowSet;
-        // console.log(times)
-        // console.log(data)
-        games.forEach(function (val) {
-            var home = val[5]
-            var away = val[10]
-            var string = home + " playing " + away;
+        var data = JSON.parse(this.response);
+        data.pop();
+        data.forEach(function (i) {
+            var visitor = i.v;
+            var home = i.h;
+            var string = visitor + " at " + home
+
 
             var ul = document.createElement("ul");
             ul.appendChild(document.createTextNode(string));
             upcomingGames.appendChild(ul);
 
 
-
         })
+
     })
 }
 
@@ -162,7 +177,7 @@ function getdata() {
 function getWeather() {
 
     var req = new XMLHttpRequest;
-    req.open("GET", "https://api.darksky.net/forecast/8356d7d56bb059e612c30ba6c4b5885a/41.1414855,-73.3578955")
+    req.open("GET", "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/8356d7d56bb059e612c30ba6c4b5885a/41.1414855,-73.3578955")
     req.send();
 
 

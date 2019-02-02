@@ -12,6 +12,15 @@
   height: 1000px;
  } */
 
+
+ .nav-link{
+
+  color:white;
+  
+  
+  }
+
+
 #goog {
 
   position: absolute;
@@ -26,11 +35,11 @@
 
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 55%;
 }
 
 
-#toDo{
+#toDo {
 
   position: absolute;
   top: 50%;
@@ -38,16 +47,16 @@
 
 }
 
-#list{
+#list {
 
   position: absolute;
-  top:60%;
-  left:78.5%;
-  
-  }
+  top: 62%;
+  left: 78.5%;
+
+}
 
 
-#subButton{
+#subButton {
 
   position: absolute;
   top: 54%;
@@ -56,12 +65,12 @@
 -moz-border-radius: 50px;
 border-radius: 50px; */
 
-} 
+}
 
 #scoreBanner {
 
   position: absolute;
-  left: 18%;
+  left: 22%;
   top: 50%;
 
 
@@ -75,16 +84,23 @@ border-radius: 50px; */
 
   position: absolute;
 
-  top: 60%;
+  top: 62%;
   left: 15%;
+
+  -moz-column-count: 2;
+  -moz-column-gap: 5px;
+  -webkit-column-count: 2;
+  -webkit-column-gap: 50px;
+  column-count: 2;
+  column-gap: 5px;
 }
 
 #wStats {
 
   position: absolute;
 
-  top: 60%;
-  left: 46%;
+  top: 62%;
+  left: 51%;
 }
 
 
@@ -103,23 +119,25 @@ border-radius: 50px; */
 
 
 
-#search{
+#search {
   border: none;
   padding: 10px;
   margin: 10px;
   height: 40px;
   width: 400px;
-  border:1px solid #eaeaea;
-  outline:none;
+  border: 1px solid #eaeaea;
+  outline: none;
   -webkit-border-radius: 50px;
--moz-border-radius: 50px;
-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
 }
-#search:hover{
+
+#search:hover {
   border-color: #a0a0a0 #b9b9b9 #b9b9b9 #b9b9b9;
 }
-#search:focus{
-  border-color:#4d90fe;
+
+#search:focus {
+  border-color: #4d90fe;
 }
 
 
@@ -136,12 +154,12 @@ body {
   font-family: 'Muli', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   padding-top: 54px;
   color: #343a40;
- /* background: #c2e59c; */
-  /* background: -webkit-linear-gradient(to right, #64b3f4, #c2e59c);
-  background: linear-gradient(to right, #64b3f4, #c2e59c); */
+   
 background-image: url("trianglify.png");
+
+background-size: 100% 150%;
 background-repeat: no-repeat;
-background-size: 100% 100%;
+  
 }
 
 @media (min-width: 992px) {
@@ -222,6 +240,7 @@ p.lead {
   font-weight: 800;
   letter-spacing: 0.05rem;
   text-transform: uppercase;
+  color: white
 }
 
 #sideNav .navbar-toggler:focus {
@@ -260,7 +279,7 @@ p.lead {
   #sideNav .navbar-brand .img-profile {
     max-width: 10rem;
     max-height: 10rem;
-    border: 0.5rem solid rgba(255, 255, 255, 0.2);
+    border: 0.5rem solid rgba(201, 25, 25, 0.2);
   }
 
   #sideNav .navbar-collapse {
@@ -314,27 +333,9 @@ section.resume-section .resume-item .resume-date {
   }
 }
 
-@media (min-width: 992px) {
-  section.resume-section {
-    padding-top: 3rem !important;
-    padding-bottom: 3rem !important;
-  }
-}
+
 
 .bg-primary {
   background-color: gray !important;
 }
 
-.text-primary {
-  color: green !important;
-}
-
-a {
-  color: green;
-}
-
-a:hover,
-a:focus,
-a:active {
-  color: green;
-}
