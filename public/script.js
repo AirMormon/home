@@ -13,6 +13,7 @@ var keys = []
 getdata();
 getList();
 getWeather();
+search.focus();
 
 
 button.onclick = function () {
