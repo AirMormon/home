@@ -23,21 +23,21 @@ button.onclick = function () {
     search.value = "";
 }
 
-window.addEventListener('keydown', keysPressed)
+//window.addEventListener('keydown', keysPressed)
 
 
-function keysPressed(e) {
-    // store an entry for every key pressed
-    keys[e.keyCode] = true;
+// function keysPressed(e) {
+//     // store an entry for every key pressed
+//     keys[e.keyCode] = true;
 
-    // Ctrl + f
-    if (keys[16] && keys[76]) {
-        // do something
-        makeList();
-        // prevent default browser behavior
-        e.preventDefault();
-    }
-}
+//     // Ctrl + f
+//     if (keys[16] && keys[76]) {
+//         // do something
+//         makeList();
+//         // prevent default browser behavior
+//         e.preventDefault();
+//     }
+// }
 
 search.addEventListener("keyup", function (event) {
     // Cancel the default action, if needed
