@@ -10,6 +10,8 @@ var subBut = document.getElementById("subButton")
 var list = document.getElementById("list")
 var keys = []
 
+click();
+
 getdata();
 getList();
 getWeather();
@@ -18,27 +20,55 @@ search.focus();
 
 button.onclick = function () {
     var param = search.value
-    var link = "https://www.google.com/search?q=" + param
+
+    if (param.indexOf('.com') > -1)
+{
+   var link = "https://www." + param
+     var newPage = window.open(link, '_blank');
+    newPage.focus();
+    search.value = "";
+
+}else{
+   var link = "https://www.google.com/search?q=" + param
     var newPage = window.open(link, '_blank');
     newPage.focus();
     search.value = "";
 }
+    // var link = "https://www.google.com/search?q=" + param
+    // var newPage = window.open(link, '_blank');
+    // newPage.focus();
+    // search.value = "";
 
-//window.addEventListener('keydown', keysPressed)
+
+}
 
 
-// function keysPressed(e) {
-//     // store an entry for every key pressed
-//     keys[e.keyCode] = true;
 
-//     // Ctrl + f
-//     if (keys[16] && keys[76]) {
-//         // do something
-//         makeList();
-//         // prevent default browser behavior
-//         e.preventDefault();
-//     }
-// }
+function click(){
+
+
+
+
+
+
+
+}
+
+window.addEventListener('onkeyup', keysPressed)
+
+
+function keysPressed(e) {
+    // store an entry for every key pressed
+    keys[e.keyCode] = true;
+
+    // Ctrl + f
+    if (keys[16] && keys[76]) {
+        // do something
+        makeList();
+        // prevent default browser behavior
+        e.preventDefault();
+    }
+}
 
 search.addEventListener("keyup", function (event) {
     // Cancel the default action, if needed
