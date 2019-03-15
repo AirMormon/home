@@ -143,15 +143,15 @@ function getList() {
 
 
 
-            document.getElementById("action").addEventListener('click', function () {
-                deleteThing("action")
+            document.getElementById(action).addEventListener('click', function () {
+                deleteThing(action)
             })
-            document.getElementById("action").addEventListener('mouseover', function () {
-                document.getElementById("action").style.color = "red";
+            document.getElementById(action).addEventListener('mouseover', function () {
+                document.getElementById(action).style.color = "red";
             })
 
-            document.getElementById("action").addEventListener('mouseout', function () {
-                document.getElementById("action").style.color = "#343a40";
+            document.getElementById(action).addEventListener('mouseout', function () {
+                document.getElementById(action).style.color = "#343a40";
             })
         })
     })
