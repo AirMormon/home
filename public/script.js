@@ -18,22 +18,28 @@ getWeather();
 search.focus();
 
 
+
+
+
+
+
+
+
 button.onclick = function () {
     var param = search.value
 
-    if (param.indexOf('.com') > -1)
-{
-   var link = "https://www." + param
-     var newPage = window.open(link, '_blank');
-    newPage.focus();
-    search.value = "";
+    if (param.indexOf('.com') > -1) {
+        var link = "https://www." + param
+        var newPage = window.open(link, '_blank');
+        newPage.focus();
+        search.value = "";
 
-}else{
-   var link = "https://www.google.com/search?q=" + param
-    var newPage = window.open(link, '_blank');
-    newPage.focus();
-    search.value = "";
-}
+    } else {
+        var link = "https://www.google.com/search?q=" + param
+        var newPage = window.open(link, '_blank');
+        newPage.focus();
+        search.value = "";
+    }
     // var link = "https://www.google.com/search?q=" + param
     // var newPage = window.open(link, '_blank');
     // newPage.focus();
@@ -44,7 +50,7 @@ button.onclick = function () {
 
 
 
-function click(){
+function click() {
 
 
 
@@ -54,21 +60,10 @@ function click(){
 
 }
 
-window.addEventListener('onkeyup', keysPressed)
+//window.addEventListener('onkeyup', keysPressed)
 
 
-function keysPressed(e) {
-    // store an entry for every key pressed
-    keys[e.keyCode] = true;
 
-    // Ctrl + f
-    if (keys[16] && keys[76]) {
-        // do something
-        makeList();
-        // prevent default browser behavior
-        e.preventDefault();
-    }
-}
 
 search.addEventListener("keyup", function (event) {
     // Cancel the default action, if needed
@@ -77,6 +72,11 @@ search.addEventListener("keyup", function (event) {
     if (event.keyCode === 13) {
         // Trigger the button element with a click
         button.click();
+    }
+
+    if(event.keyCode===18){
+
+        search.value +=".com"
     }
 
 
@@ -143,15 +143,15 @@ function getList() {
 
 
 
-            document.getElementById(action).addEventListener('click', function () {
-                deleteThing(action)
+            document.getElementById("action").addEventListener('click', function () {
+                deleteThing("action")
             })
-            document.getElementById(action).addEventListener('mouseover', function () {
-                document.getElementById(action).style.color = "red";
+            document.getElementById("action").addEventListener('mouseover', function () {
+                document.getElementById("action").style.color = "red";
             })
 
-            document.getElementById(action).addEventListener('mouseout', function () {
-                document.getElementById(action).style.color = "#343a40";
+            document.getElementById("action").addEventListener('mouseout', function () {
+                document.getElementById("action").style.color = "#343a40";
             })
         })
     })
