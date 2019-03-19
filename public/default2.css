@@ -24,7 +24,7 @@
 #goog {
 
   position: absolute;
-  top: 20%;
+  top: 30%;
   left: 40%;
 
 }
@@ -34,7 +34,7 @@
 
 
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 55%;
 }
 
@@ -42,7 +42,7 @@
 #toDo {
 
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 80%;
 
 }
@@ -50,7 +50,7 @@
 #list {
 
   position: absolute;
-  top: 62%;
+  top: 72%;
   left: 78.5%;
 
 }
@@ -59,7 +59,7 @@
 #subButton {
 
   position: absolute;
-  top: 54%;
+  top: 64%;
   left: 85%;
   /* -webkit-border-radius: 50px;
 -moz-border-radius: 50px;
@@ -71,7 +71,7 @@ border-radius: 50px; */
 
   position: absolute;
   left: 22%;
-  top: 50%;
+  top: 60%;
 
 
 }
@@ -84,7 +84,7 @@ border-radius: 50px; */
 
   position: absolute;
 
-  top: 62%;
+  top: 72%;
   left: 15%;
 
   -moz-column-count: 2;
@@ -99,7 +99,7 @@ border-radius: 50px; */
 
   position: absolute;
 
-  top: 62%;
+  top: 72%;
   left: 51%;
 }
 

@@ -55,6 +55,35 @@ app.get('/nba', function (req, res) {
 
 
 
+// app.get('/weather', function (req, res) {
+
+
+
+//   var array = []
+//   request('https://weather.com/weather/today/l/41.13,-73.35?par=google', (error, response, html) => {
+
+//     if (!error && response.statusCode == 200) {
+//       const $ = cheerio.load(html)
+//       $('.day').each((i, el) => {
+//         visit = $(el)
+//           .find('.temp')
+//           .text()
+
+
+//         // array.push({
+//         //   "v": visit,
+//         //   "h": home
+//         // });
+//       })
+//       console.log(visit)
+//       //res.send(array)
+//     }
+//   })
+
+
+
+// })
+
 
 //the specific route handler below is not really needed anymore since by default express looks to server index.html
 app.get('/', function (req, res) {
@@ -63,7 +92,7 @@ app.get('/', function (req, res) {
 
 app.post('/data', function (req, res) {
   var data = req.body;
-  console.log(data)
+  //console.log(data)
   db.collection('dataSet').insertOne(data);
 })
 

@@ -74,9 +74,9 @@ search.addEventListener("keyup", function (event) {
         button.click();
     }
 
-    if(event.keyCode===18){
+    if (event.keyCode === 18) {
 
-        search.value +=".com"
+        search.value += ".com"
     }
 
 
@@ -97,17 +97,20 @@ subBut.addEventListener("click", function () {
 
 
 function makeList() {
-    var item = prompt("Add Item to List")
-    var data = {
-        "key": "key",
-        "stuff": item
+    var item = prompt("Add Item to List","Your Item")
+
+    if (item != null) {
+        var data = {
+            "key": "key",
+            "stuff": item
+        }
+        var arrStr = JSON.stringify(data)
+        var request = new XMLHttpRequest
+        request.open("POST", "/data", true)
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.send(arrStr);
+        getList();
     }
-    var arrStr = JSON.stringify(data)
-    var request = new XMLHttpRequest
-    request.open("POST", "/data", true)
-    request.setRequestHeader('Content-Type', 'application/json');
-    request.send(arrStr);
-    getList();
 }
 
 function getList() {
@@ -116,11 +119,11 @@ function getList() {
     req.send();
     req.addEventListener('load', function () {
         var data = JSON.parse(this.response);
-        console.log(data)
+        //console.log(data)
 
         data.forEach(function (val) {
             var action = val.stuff
-            console.log(action)
+            //console.log(action)
             var ul = document.createElement("ul");
             li = document.createElement("li")
             li.appendChild(document.createTextNode(action));
@@ -214,10 +217,10 @@ function getWeather() {
 
     req.addEventListener('load', function () {
         var data = JSON.parse(this.responseText);
-        //   console.log(data);
+        //console.log(data);
         var temp = "Temperature is " + data.currently.temperature;
         var sum = data.hourly.summary;
-        var wind = "Wind speed is " + data.currently.windSpeed
+        var oSum = data.daily.summary;
         var feels = "Feels like " + data.currently.apparentTemperature
 
 
@@ -234,9 +237,9 @@ function getWeather() {
         Sul.appendChild(document.createTextNode(sum));
         wStats.appendChild(Sul);
 
-        var Wul = document.createElement("ul");
-        Wul.appendChild(document.createTextNode(wind));
-        wStats.appendChild(Wul);
+        // var oSul = document.createElement("ul");
+        // oSul.appendChild(document.createTextNode(oSum));
+        // wStats.appendChild(oSul);
 
 
 
