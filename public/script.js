@@ -224,7 +224,6 @@ function getWeather() {
         var feels = "Feels like " + data.currently.apparentTemperature
 
 
-
         var Tul = document.createElement("ul");
         Tul.appendChild(document.createTextNode(temp));
         wStats.appendChild(Tul);
