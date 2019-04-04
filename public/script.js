@@ -74,7 +74,7 @@ search.addEventListener("keyup", function (event) {
         button.click();
     }
 
-    if (event.keyCode === 18) {
+    if (event.keyCode === 190) {
 
         search.value += ".com"
     }
