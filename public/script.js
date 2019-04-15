@@ -9,12 +9,14 @@ var subBut = document.getElementById("subButton")
 
 var list = document.getElementById("list")
 var keys = []
+var longit
+var latit
 
 click();
-
+getLocation();
 getdata();
 getList();
-getWeather();
+
 search.focus();
 
 
@@ -49,6 +51,25 @@ button.onclick = function () {
 }
 
 
+
+
+function getLocation() {
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {}
+
+
+    function showPosition(position) {
+        latit = position.coords.latitude
+        longit = position.coords.longitude;
+        getWeather();
+    }
+
+
+
+   
+}
 
 function click() {
 
@@ -97,7 +118,7 @@ subBut.addEventListener("click", function () {
 
 
 function makeList() {
-    var item = prompt("Add Item to List","Your Item")
+    var item = prompt("Add Item to List", "Your Item")
 
     if (item != null) {
         var data = {
@@ -211,7 +232,7 @@ function getdata() {
 function getWeather() {
 
     var req = new XMLHttpRequest;
-    req.open("GET", "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/8356d7d56bb059e612c30ba6c4b5885a/41.1414855,-73.3578955")
+    req.open("GET", "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/8356d7d56bb059e612c30ba6c4b5885a/" + latit + "," + longit)
     req.send();
 
 
